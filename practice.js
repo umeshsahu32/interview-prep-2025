@@ -7,7 +7,7 @@ const selectionSort = (arr) => {
 
   for (let i = 0; i < n - 1; i++) {
     let minIndex = i;
-    console.log(`\n🔁 Pass ${i + 1}: Start from index ${i}`);
+    console.log(`\n🔁 Start from index ${i}`);
 
     for (let j = i + 1; j < n; j++) {
       console.log("array==>", arr);

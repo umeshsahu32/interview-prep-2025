@@ -1,4 +1,3 @@
-// QUESTION 11
 // Write a program to find duplicate numbers in an integer array ?
 
 const findDuplicateEle = (inputArr) => {
@@ -7,13 +6,12 @@ const findDuplicateEle = (inputArr) => {
   for (let i = 0; i < inputArr.length; i++) {
     count[inputArr[i]] = (count[inputArr[i]] || 0) + 1;
   }
-  console.log(count);
 
   let duplicateInt = [];
 
   for (let key in count) {
     if (count[key] > 1) {
-      duplicateInt.push(key);
+      duplicateInt.push(Number(key));
     }
   }
   return duplicateInt;

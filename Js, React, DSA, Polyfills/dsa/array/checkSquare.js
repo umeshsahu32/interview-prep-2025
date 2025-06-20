@@ -4,25 +4,7 @@
 const array1 = [1, 2, 3, 2];
 const array2 = [4, 4, 9, 1];
 
-// TODO METHOD 1
-// const checkSquare = (arr1, arr2) => {
-//   for (let i = 0; i < arr1.length; i++) {
-//     isSquare = false;
-//     for (let j = 0; j < arr2.length; j++) {
-//       if (arr1[i] * arr1[i] == arr2[j]) {
-//         isSquare = true;
-//       }
-//       if (j === arr2.length - 1) {
-//         if (!isSquare) {
-//           return false;
-//         }
-//       }
-//     }
-//   }
-//   return isSquare;
-// };
-
-//TODO METHOD 2
+//TODO METHOD 1
 const checkSquare = (arr1, arr2) => {
   const map1 = {};
   const map2 = {};
@@ -34,20 +16,11 @@ const checkSquare = (arr1, arr2) => {
   for (item2 of arr2) {
     map2[item2] = (map2[item2] || 0) + 1;
   }
-  console.log(map1);
-  console.log(map2);
-  //   for (let key in map1) {
-  //     if (!map2[key * key]) {
-  //       return false;
-  //     }
 
-  //     if (map1[key] !== map2[key * key]) {
-  //       return false;
-  //     }
-  //   }
-
-  for (let key in obj1) {
-    if (obj1[key] !== obj2[key]) return false;
+  for (const key in obj1) {
+    const square = key * key;
+    if (!obj2[square]) return false;
+    if (obj2[square] !== obj1[key]) return false;
   }
   return true;
 };

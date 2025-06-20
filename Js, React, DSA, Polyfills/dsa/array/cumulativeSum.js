@@ -1,18 +1,20 @@
-// QUESTION 16
 // Return an array showing the cumulative sum at each index of an array of integers
 
 let arrCumulativeSum = [1, 3, 5, 7];
 
-const cumulativeSum = (list) => {
-  let result = [list[0]];
+// METHOD 1 (BETTER PERFORMANCE)
+const cumulativeSum = (arr) => {
+  const result = new Array(arr.length);
+  result[0] = arr[0];
 
-  for (let i = 1; i < list.length; i++) {
-    result.push(list[i] + result[i - 1]);
+  for (let i = 1; i < arr.length; i++) {
+    result[i] = result[i - 1] + arr[i];
   }
 
   return result;
 };
 
+// METHOD 2
 const arrCumulativeSumFn = (arr) => {
   let arr2 = [];
 
