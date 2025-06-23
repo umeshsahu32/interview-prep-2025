@@ -91,9 +91,12 @@ const TaskManager = () => {
           id: updateItem.id,
           status: updateItem.status,
         };
-        const copyTask = [...tasks];
-        const filterList = copyTask.filter((item) => item.id !== updateItem.id);
-        setTasks((prevTask) => [...filterList, obj]);
+        const updatedTask = tasks.map((item) =>
+          item.id === updateItem.id
+            ? { ...item, title: inputValue.trim() }
+            : item
+        );
+        setTasks(updatedTask);
         setUpdateItem(null);
       } else {
         const obj = {
@@ -113,26 +116,26 @@ const TaskManager = () => {
   };
 
   const handleDragNDrop = (status) => {
-    let copyTask = [...tasks];
-    copyTask = copyTask.map((item) => {
-      if (dragTask.id === item.id) {
-        item.status = status;
-      }
-      return item;
-    });
-    setTasks(copyTask);
+    if (!dragTask || dragTask.status === status) {
+      setDragTask(null); // Still clear dragging state!
+      return; // No update if dropped in the same column
+    }
+
+    const updatedTasks = tasks.map((item) =>
+      item.id === dragTask.id ? { ...item, status } : item
+    );
+
+    setTasks(updatedTasks);
     setDragTask(null);
   };
 
   const handleOnDrop = (e) => {
-    const status = e.target.getAttribute("data-status"); //TODO,DOING,DONE
-    console.log("dropping ", status);
-    if (status === TODO) {
-      handleDragNDrop(TODO);
-    } else if (status === DOING) {
-      handleDragNDrop(DOING);
-    } else if (status === DONE) {
-      handleDragNDrop(DONE);
+    const status = e.target
+      .closest("[data-status]")
+      ?.getAttribute("data-status");
+
+    if (status) {
+      handleDragNDrop(status);
     }
   };
 
