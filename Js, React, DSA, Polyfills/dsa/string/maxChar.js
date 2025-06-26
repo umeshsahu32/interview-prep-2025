@@ -1,26 +1,23 @@
-// QUESTION 6
 // ? FIND THE MAXIMUM OCCURRING CHARACTER IN STRING
 
-const str = "A wonderful serenity has taken possession of my soul";
+const paragraph = "A wonderful serenity has taken possession of my soul";
 
-const findMaxChar = (str) => {
-  const a = str.split(" ").join("").split("");
-  const map = {};
+const maximumOccurringChar = (str) => {
+  str = str.toLowerCase().split(" ").join("").split("");
+  const charCount = {};
 
-  a.forEach((element) => {
-    map[element] = (map[element] || 0) + 1;
-  });
+  for (let letter of str) {
+    charCount[letter] = (charCount[letter] || 0) + 1;
+  }
 
-  let max = 1;
-  let char;
-  for (let key in map) {
-    if (map[key] > max) {
-      max = map[key];
-      char = key;
+  const word = { char: "", count: 0 };
+  for (let key in charCount) {
+    if (charCount[key] > word.count) {
+      word.count = charCount[key];
+      word.char = key;
     }
   }
-  return [char, max];
+  return word;
 };
 
-const resultMaxChar = findMaxChar(str);
-console.log("result", resultMaxChar);
+console.log(maximumOccurringChar(paragraph));

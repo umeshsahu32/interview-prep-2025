@@ -9,3 +9,27 @@
 // Input: n = 3
 // Output: 1
 // Explanation: 1 is the only Perfect Square less than 3. So, the Output is 1.
+
+// SOLUTION 1
+// const findPerfectSquare = (num) => {
+//   let result = [];
+
+//   for (let i = 1; i < num; i++) {
+//     let squares = i * i;
+//     if (squares < num) {
+//       result.push(squares);
+//     }
+//   }
+
+//   return result.length;
+// };
+
+// SOLUTION 2
+const findPerfectSquare = (num) => {
+  let count = 0;
+  for (let i = 1; i * i < num; i++) {
+    count++;
+  }
+};
+console.log(findPerfectSquare(9));
+console.log(findPerfectSquare(3));

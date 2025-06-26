@@ -12,3 +12,25 @@
 // Examples 3:
 // Input: arr = [1, 2, -1]
 // Output: false
+
+const hasZeroSumSubarray = (arr) => {
+  const prefixSums = new Set();
+
+  let sum = 0;
+
+  for (const num of arr) {
+    sum = sum + num;
+
+    if (sum === 0 || prefixSums.has(sum) || num === 0) {
+      return true;
+    }
+
+    prefixSums.add(sum);
+  }
+
+  return false;
+};
+
+console.log(hasZeroSumSubarray([4, 2, -3, 1, 6])); // true
+console.log(hasZeroSumSubarray([4, 2, 0, 1, 6])); // true
+console.log(hasZeroSumSubarray([1, 2, -1])); // false

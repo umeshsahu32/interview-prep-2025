@@ -12,7 +12,7 @@ Array.prototype.mySome = function (callbackFn) {
 
   for (let i = 0; i < arr.length; i++) {
     if (i in arr) {
-      const value = callbackFn(arr[i]);
+      const value = callbackFn(arr[i], i, arr);
       if (value) return true;
     }
   }

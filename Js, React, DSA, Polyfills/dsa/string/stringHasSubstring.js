@@ -1,11 +1,30 @@
 // CHECK IF A STRING CONTAINS Substring
+// INPUT: mainStr = 'foo', subStr = 'oo'
+// OUTPUT: true
 
-const string1 = "foo";
-const substring1 = "oo";
+const mainString = "foo";
+const subString = "oo";
+// console.log(mainString.includes(subString));
+// console.log(mainString.indexOf(subString) !== -1);
 
-console.log(string1.includes(substring1)); // true
+const findSubStringPresent = (mainStr, subStr) => {
+  if (subStr.length === 0) return true;
+  if (mainStr.length < subStr.length) return false;
 
-var string2 = "foo";
-var substring2 = "oo";
+  for (let i = 0; i <= mainStr.length - subStr.length; i++) {
+    let match = true;
 
-console.log(string2.indexOf(substring2) !== -1); // true
+    for (let j = 0; j < subStr.length; j++) {
+      if (mainStr[i + j] !== subStr[j]) {
+        match = false;
+        break;
+      }
+    }
+
+    if (match) return true; // found the substring
+  }
+
+  return false; // not found
+};
+
+console.log(findSubStringPresent("foo", "oo"));

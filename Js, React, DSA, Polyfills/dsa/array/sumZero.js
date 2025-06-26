@@ -14,33 +14,27 @@
 // Output: [[-6, 6],[-1, 1]]
 // Explanation: The distinct pairs are [-1, 1] and [-6, 6].
 
-const arrElement = [-5, -4, -3, -2, 0, 2, 4, 6, 7, 8];
-// ! METHOD 1
-// const findSumZeroPair = (arr) => {
-//   for (let i = 0; i < arr.length - 1; i++) {
-//     for (let j = 1; j < arr.length; j++) {
-//       console.log(arr[i], arr[j]);
-//       if (arr[i] + arr[j] === 0) {
-//         return [arr[i], arr[j]];
-//       }
-//     }
-//   }
-// };
-// ! METHOD 2
-const findSumZeroPair = (arr) => {
-  let left = 0;
-  let right = arr.length - 1;
-  while (left < right) {
-    let sum = arr[left] + arr[right];
-    if (sum === 0) {
-      return [arr[left], arr[right]];
-    } else if (sum > 0) {
-      right--;
-    } else {
-      left++;
+const arrElement = [6, 1, 8, 0, 4, -9, -1, -10, -6, -5];
+
+const findZeroSumPairs = (arr) => {
+  const seen = new Set();
+  const result = new Set();
+
+  for (const item of arr) {
+    const commonest = -item;
+    if (seen.has(commonest)) {
+      const pair = [Math.min(item, commonest), Math.max(item, commonest)];
+      result.add(pair.toString());
     }
+    seen.add(item);
   }
+
+  const resultArr = Array.from(result).map((item) =>
+    item.split(",").map(Number)
+  );
+
+  return resultArr.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
 };
 
-const resultFindSumZero = findSumZeroPair(arrElement);
-console.log("result", resultFindSumZero);
+console.log(findZeroSumPairs(arrElement));
+// Output: [[-6, 6], [-1, 1]]

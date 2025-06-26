@@ -1,15 +1,18 @@
-// QUESTION 19
 // Find the Longest Word in a String
 
-function findLongestWord(str) {
-  const words = str.split(" ");
-  let longest = "";
-  for (const word of words) {
-    if (word.length > longest.length) {
-      longest = word;
+const findLongestWord = (str) => {
+  if (str.length === 0) return "";
+  str = str.split(" ");
+
+  let result = { count: 0, word: "" };
+  for (let word of str) {
+    if (word.length > result.count) {
+      result.count = word.length;
+      result.word = word;
     }
   }
-  return longest.length;
-}
+
+  return result;
+};
 
 console.log(findLongestWord("word is the barged"));

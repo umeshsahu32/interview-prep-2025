@@ -60,17 +60,19 @@ const SelectableGrid = () => {
         }}
         onMouseUp={mouseUpHandler}
       >
-        {[...Array(COLUMNS * ROWS).keys()].map((_, item) => {
+        {[...Array(COLUMNS * ROWS).keys()].map((_, index) => {
           return (
             <div
               className={`flex justify-center items-center border border-violet-400 font-semibold ${
-                selectedBox.includes(item + 1) ? "bg-violet-700 text-white" : ""
+                selectedBox.includes(index + 1)
+                  ? "bg-violet-700 text-white"
+                  : ""
               }`}
-              key={item}
-              onMouseEnter={() => mouseEnterHandler(item + 1)}
-              onMouseDown={() => mouseDownHandler(item + 1)}
+              key={index}
+              onMouseEnter={() => mouseEnterHandler(index + 1)}
+              onMouseDown={() => mouseDownHandler(index + 1)}
             >
-              {item + 1}
+              {index + 1}
             </div>
           );
         })}

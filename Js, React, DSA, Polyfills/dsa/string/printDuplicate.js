@@ -11,3 +11,25 @@
 // Input: s = "mississippi"
 // Output: ['i', 4], ['s', 4], ['p', 2]
 // Explanation: Characters i, s, and p have multiple occurrences. The output reflects that with count and order preserved.
+
+const findMultipleOccurrences = (str) => {
+  if (str.length === 0) return {};
+
+  const strObj = {};
+  for (const letter of str) {
+    strObj[letter] = (strObj[letter] || 0) + 1;
+  }
+
+  const result = [];
+  for (let key in strObj) {
+    if (strObj[key] > 1) {
+      result.push([key, strObj[key]]);
+    }
+  }
+
+  return result;
+};
+
+console.log(findMultipleOccurrences("geeksforgeeks"));
+console.log(findMultipleOccurrences("programming"));
+console.log(findMultipleOccurrences("mississippi"));

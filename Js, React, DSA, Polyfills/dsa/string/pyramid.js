@@ -1,158 +1,194 @@
-// Upper Pyramid (4)
+// 1.  Upper Pyramid
+// 2.  Reverse Pyramid
+// 3.  Right Aligned Pyramid
+// 4.  Left Aligned Pyramid
+// 5.  Left Aligned Number Pyramid
+// 6.  Right Aligned Number Pyramid
+// 7.  Reverse Left Aligned Number Pyramid
+// 8.  Reverse Right Aligned Number Pyramid
+// 9.  Reverse Countdown Pyramid
+// 10. Growing Reverse Pyramid
+
+// ! Upper Pyramid (4)
+
 //      *
 //     ***
 //    *****
 //   *******
 
-const upperPyramid = (n) => {
-  for (let i = 1; i <= n; i++) {
-    let str = "* ";
-    let space = "  ";
-    console.log(space.repeat(n - i) + str.repeat(i * 2 - 1));
+const upperPyramid = (rows) => {
+  for (let i = 1; i <= rows; i++) {
+    let space = " ".repeat(rows - i);
+    let star = "*".repeat(2 * i - 1);
+    console.log(space + star);
   }
 };
 
-///
-// Reverse Pyramid (4)
+upperPyramid(4);
+
+// ! Reverse Pyramid (4)
+
 //  #######
 //   #####
 //    ###
 //     #
 
-const ReversePyramid1 = (n) => {
-  for (let i = 0; i < n; i++) {
-    let result = "";
-    for (let j = 2 * n - 1; j >= 2 * i + 1; j--) {
-      result += "#";
-    }
-    console.log(" ".repeat(i) + result + " ".repeat(i));
+const reversePyramid = (rows) => {
+  for (let i = rows; i > 0; i--) {
+    let space = " ".repeat(rows - i);
+    let star = "*".repeat(2 * i - 1);
+    console.log(space + star);
   }
 };
 
-or;
+reversePyramid(4);
 
-const ReversePyramid2 = (n) => {
-  for (let i = n; i >= 1; i--) {
-    let str = "* ";
-    let space = "  ";
-    console.log(space.repeat(n - i) + str.repeat(i * 2 - 1));
-  }
-};
-
-ReversePyramid1(4);
-ReversePyramid2(4);
-
-// // 12345
-// 1234
-// 123
-// 12
-// 1
-
-const staircase1 = (n) => {
-  for (let i = 0; i < n; i++) {
-    let result = "";
-    for (let j = 1; j <= n - i; j++) {
-      result += j;
-    }
-    console.log(result);
-  }
-};
-
-staircase1(5);
-
-//
-// 1
-// 12
-// 123
-// 1234
-// 12345
-
-const staircase2 = (n) => {
-  var num = "";
-  var size = n;
-  for (var i = 1; i <= size; i++) {
-    num = num + i;
-    console.log(num);
-  }
-};
-
-staircase2(5);
-
-//
-// 54321
-// 5432
-// 543
-// 54
-// 5
-
-const staircase3 = (n) => {
-  for (let i = 1; i <= n; i++) {
-    let result = "";
-    for (let j = n; j >= i; j--) {
-      result += j;
-    }
-    console.log(result);
-  }
-};
-
-staircase3(5);
-
-// 5
-// 54
-// 543
-// 5432
-// 54321
-
-const staircase4 = (n) => {
-  let result = "";
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j <= i + 1; j++) {}
-    result += n - i;
-    console.log(result);
-  }
-};
-
-staircase4(5);
-//
+// ! Right Aligned Pyramid
 //     #
 //    ##
 //   ###
 //  ####
 // #####
 
-const staircase5_1 = (n) => {
-  let result = "";
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j <= i + 1; j++) {}
-    result += "#";
-    console.log(" ".repeat(n - i) + result);
+const rightAlignedPyramid = (rows) => {
+  for (let i = 1; i <= rows; i++) {
+    let space = " ".repeat(rows - i);
+    let hashes = "#".repeat(i);
+    console.log(space + hashes);
   }
 };
 
-staircase1(5);
+rightAlignedPyramid(4);
 
-const staircase5_2 = (n) => {
-  for (let i = 1; i <= n; i++) {
-    console.log(" ".repeat(n - i) + "#".repeat(i));
-  }
-};
-
-staircase5_1(5);
-staircase5_2(5);
-
-//// #
+// ! Left Aligned Pyramid
+// #
 // ##
 // ###
 // ####
 // #####
 
-const staircase6 = (n) => {
-  let result = "";
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j <= i + 1; j++) {}
-    result += "#";
-    console.log(result);
+const leftAlignedPyramid = (rows) => {
+  for (let i = 1; i <= rows; i++) {
+    let hashes = "#".repeat(i);
+    console.log(hashes);
   }
 };
 
-staircase6(5);
+leftAlignedPyramid(4);
+
+// ! Left Aligned Number Pyramid
+// 1
+// 12
+// 123
+// 1234
+// 12345
+
+const leftAlignedNumberPyramid = (rows) => {
+  for (let i = 1; i <= rows; i++) {
+    let lines = "";
+    for (let j = 1; j <= i; j++) {
+      lines += j;
+    }
+    console.log(lines);
+  }
+};
+
+leftAlignedNumberPyramid(5);
+
+// ! Right Aligned Number Pyramid
+//     1
+//    12
+//   123
+//  1234
+// 12345
+
+const rightAlignedNumberPyramid = (rows) => {
+  for (let i = 1; i <= rows; i++) {
+    let numbers = "";
+    let space = " ".repeat(rows - i);
+
+    for (let j = 1; j <= i; j++) {
+      numbers += j;
+    }
+    console.log(space + numbers);
+  }
+};
+
+rightAlignedNumberPyramid(5);
+
+// ! Reverse Left Aligned Number Pyramid
+// 12345
+// 1234
+// 123
+// 12
+// 1
+
+const reverseLeftAlignedNumberPyramid = (rows) => {
+  for (let i = rows; i >= 1; i--) {
+    let line = "";
+    for (let j = 1; j <= i; j++) {
+      line += j;
+    }
+    console.log(line);
+  }
+};
+
+reverseLeftAlignedNumberPyramid(5);
+
+// ! Reverse Right Aligned Number Pyramid
+// 12345
+//  1234
+//   123
+//    12
+//     1
+
+const reverseRightAlignedNumberPyramid = (rows) => {
+  for (let i = rows; i >= 1; i--) {
+    let line = "";
+    let space = " ".repeat(rows - i);
+    for (let j = 1; j <= i; j++) {
+      line += j;
+    }
+    console.log(space + line);
+  }
+};
+
+reverseRightAlignedNumberPyramid(5);
+
+// ! Reverse Countdown Triangle
+// 54321
+// 5432
+// 543
+// 54
+// 5
+
+const reverseCountdownTriangle = (rows) => {
+  for (let i = 0; i < rows; i++) {
+    let line = "";
+    for (let j = rows; j > i; j--) {
+      line += j;
+    }
+    console.log(line);
+  }
+};
+
+reverseCountdownTriangle(5);
+
+// ! Growing Reverse Triangle
+// 5
+// 54
+// 543
+// 5432
+// 54321
+
+const growingReverseTriangle = (rows) => {
+  for (let i = 1; i <= rows; i++) {
+    let line = "";
+    for (let j = rows; j >= rows + 1 - i; j--) {
+      line += j;
+    }
+    console.log(line);
+  }
+};
+
+growingReverseTriangle(5);

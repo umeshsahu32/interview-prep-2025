@@ -1,11 +1,13 @@
-// QUESTION 8
 // Write a program to get total vowel count from String ?
-const getVowelCount = (inputStr) => {
-  let count = 0;
+
+const findVowels = (str) => {
+  if (str.length === 0) return false;
 
   const vowels = ["a", "e", "i", "o", "u"];
 
-  for (let letter of str) {
+  let count = 0;
+
+  for (const letter of str) {
     if (vowels.includes(letter)) {
       count++;
     }
@@ -13,4 +15,6 @@ const getVowelCount = (inputStr) => {
 
   return count;
 };
-console.log(getVowelCount("hello how are you today programiz website?"));
+
+console.log(findVowels("hello how are you today program website?"));
+console.log(findVowels("hello"));

@@ -18,3 +18,29 @@
 // Input: s = "([]"
 // Output: False
 // Explanation: The expression is not balanced as there is a missing ')' at the end.
+
+const parenthesisChecker = (str) => {
+  if (str.length === 0) return false;
+
+  const brackets = {
+    ")": "(",
+    "}": "{",
+    "]": "[",
+  };
+
+  const result = [];
+
+  for (const item of str) {
+    if (item === "(" || item === "[" || item === "{") {
+      result.push(item);
+    } else if (result.pop() !== brackets[item]) {
+      return false;
+    }
+  }
+
+  return result.length === 0;
+};
+
+console.log(parenthesisChecker("[{()}]"));
+console.log(parenthesisChecker("[()()]{}"));
+console.log(parenthesisChecker("([]"));

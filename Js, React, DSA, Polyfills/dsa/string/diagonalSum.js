@@ -1,5 +1,3 @@
-//QUESTION 7
-
 // Find the difference of diagonal sum of the given array
 
 const arrDiagonal = [
@@ -13,23 +11,16 @@ const arrDiagonal = [
 
 //Output=> |15-17| = 2
 
-const DiagonalSum = (arr, num) => {
+const diagonalDifference = (arr) => {
   let d1 = 0,
     d2 = 0;
 
-  for (let i = 0; i < num; i++) {
-    for (let j = 0; j < num; j++) {
-      if (i == j) {
-        d1 += arr[i][j];
-      }
-      if (i == num - j - 1) {
-        d2 += arr[i][j];
-      }
-    }
+  for (let i = 0; i < arr.length; i++) {
+    d1 = d1 + arr[i][i];
+    d2 = d2 + arr[i][arr.length - i - 1];
   }
+
   return Math.abs(d1 - d2);
 };
 
-const resultArrDiagonal = DiagonalSum(arrDiagonal, 3);
-
-console.log("result", resultArrDiagonal);
+console.log(diagonalDifference(arrDiagonal));

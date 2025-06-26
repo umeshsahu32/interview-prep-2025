@@ -11,3 +11,18 @@
 // Input: arr[] = [1]
 // Output: [1]
 // Explanation: Here arr[1] = 1 exists.
+
+const findSameElementIndex = (arr) => {
+  const newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (i + 1 === arr[i]) {
+      newArr.push(i + 1);
+    }
+  }
+
+  return newArr;
+};
+
+console.log(findSameElementIndex([15, 2, 45, 4, 7]));
+console.log(findSameElementIndex([1]));
+console.log(findSameElementIndex([4, 3, 5, 7]));
