@@ -11,3 +11,31 @@
 // Input: s = "AAA"
 // Output: ["AAA"]
 // Explanation: No other unique permutations can be formed as all the characters are same.
+
+const findPermutationOfString = (str) => {
+  const result = [];
+
+  const generate = (path, remaining) => {
+    console.log("path", path, "remaining", remaining);
+    if (remaining.length === 0) {
+      result.push(path);
+      return;
+    }
+
+    const seen = new Set(); // to avoid duplicates at the same depth
+
+    for (let i = 0; i < remaining.length; i++) {
+      const char = remaining[i];
+
+      if (seen.has(char)) continue; // skip duplicate chars at same level
+      seen.add(char);
+      const nextRemaining = remaining.slice(0, i) + remaining.slice(i + 1);
+      generate(path + char, nextRemaining);
+    }
+  };
+
+  generate("", str);
+  return result;
+};
+
+console.log(findPermutationOfString("ABC"));

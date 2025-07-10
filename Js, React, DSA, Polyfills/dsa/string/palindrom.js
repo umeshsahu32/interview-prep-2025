@@ -7,3 +7,16 @@
 // Input: s = "abc"
 // Output: false
 // Explanation: "abc" does not read the same forwards and backwards, so it is not a palindrome.
+
+const isStringPalindrome = (str) => {
+  let newStr = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    newStr = newStr + str[i];
+  }
+
+  return newStr === str;
+};
+
+console.log(isStringPalindrome("abba"));
+console.log(isStringPalindrome("naman"));
+console.log(isStringPalindrome("abc"));
