@@ -12,3 +12,20 @@
 
 // Input: arr[] = [1], x = 1
 // Output: false
+
+const findPairDiff = (arr, element) => {
+  if (arr.length <= 1) return false;
+
+  let seen = new Set();
+  for (let num of arr) {
+    if (seen.has(num + element) || seen.has(num - element)) {
+      return true;
+    }
+    seen.add(num);
+  }
+
+  return false;
+};
+console.log(findPairDiff([5, 20, 3, 2, 5, 80], 78));
+console.log(findPairDiff([90, 70, 20, 80, 50], 45));
+console.log(findPairDiff([1], 1));

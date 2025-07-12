@@ -1,4 +1,4 @@
-// Given an array, arr[] construct a product array, res[] where each element in res[i] is the product of all elements in arr[] except arr[i]. Return this resultant array, res[].
+// Given an  on zero array, arr[] construct a product array, res[] where each element in res[i] is the product of all elements in arr[] except arr[i]. Return this resultant array, res[].
 // Note: Each element is res[] lies inside the 32-bit integer range.
 
 // Examples:
@@ -11,7 +11,13 @@
 // For i = 3, res[i] = 10 * 3 * 5 * 2 is 300.
 // For i = 4, res[i] = 10 * 3 * 5 * 6 is 900.
 
-// Input: arr[] = [12, 0]
-// Output: [0, 12]
-// Explanation: For i = 0, res[i] is 0.
-// For i = 1, res[i] is 12.
+const findProduct = (arr) => {
+  const product = arr.reduce((acc, cumm) => acc * cumm);
+  let res = [];
+  for (let item of arr) {
+    res.push(product / item);
+  }
+  return res;
+};
+
+console.log(findProduct([10, 3, 5, 6, 2]));

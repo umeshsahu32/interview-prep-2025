@@ -4,3 +4,17 @@
 
 // Input: arr[] = {1, 4, 3, 2, 6, 5}
 // Output: {5, 6, 2, 3, 4, 1}
+
+const reverseArr = (arr) => {
+  if (arr.length === 0) return [];
+
+  const result = [];
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    result.push(arr[i]);
+  }
+
+  return result;
+};
+
+console.log(reverseArr([1, 4, 3, 2, 6, 5]));

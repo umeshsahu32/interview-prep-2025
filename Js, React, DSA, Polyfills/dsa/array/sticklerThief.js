@@ -36,7 +36,3 @@ const maxLoot = (arr) => {
 console.log(maxLoot([6, 5, 5, 7, 4])); //15
 console.log(maxLoot([1, 5, 3])); //5
 console.log(maxLoot([4, 4, 4, 4])); //8
-
-console.log(maxLoot([6, 5, 5, 7, 4])); //15
-// console.log(maxLoot([1, 5, 3])); //5
-// console.log(maxLoot([4, 4, 4, 4])); //8

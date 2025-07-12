@@ -15,3 +15,28 @@
 // Input: arr[] = [4, 3, 6, 2, 1, 1]
 // Output: [1, 5]
 // Explanation: Repeating number is 1 and the missing number is 5.
+
+const findDuplicate = (arr) => {
+  let set = new Set();
+  for (let item of arr) {
+    if (set.has(item)) return item;
+    set.add(item);
+  }
+};
+
+const findMissingNumber = (arr) => {
+  for (let i = 1; i <= arr.length; i++) {
+    if (!arr.includes(i)) return i;
+  }
+};
+
+const findMissingAndRepeatingNumber = (arr) => {
+  if (arr.length === 0) return 0;
+  const duplicateNum = findDuplicate(arr);
+  const missingNumber = findMissingNumber(arr);
+  return { duplicateNum, missingNumber };
+};
+
+console.log(findMissingAndRepeatingNumber([2, 2]));
+console.log(findMissingAndRepeatingNumber([1, 3, 3]));
+console.log(findMissingAndRepeatingNumber([4, 3, 6, 2, 1, 1]));

@@ -6,39 +6,23 @@
 // Input: [1,1,2]               ----->>>>>  Output: 2, [1,2,_]
 // Input: [0,0,1,1,1,2,2,3,3,4] ----->>>>>  Output: 5, [0,1,2,3,4,_,_,_,_,_]
 
-// With JS Methods
-function removeDuplicates(nums) {
-  // return [...new Set(arr)].length;
-  for (let i = 0; i < nums.length - 1; i++) {
-    // O(n)
-    if (nums[i] === nums[i + 1]) {
-      nums.splice(i + 1, 1); // O(1)
-      i--;
-    }
-  }
-
-  return nums.length;
-}
-
-// Time Complexity - O(n)
-// Space Complexity - O(1)
-// console.log(removeDuplicates([1, 1, 2]));
-
-// Without JS Methods - Two pointer Approach
-function removeDuplicatesNew(nums) {
-  if (nums.length === 0) return 0;
+const removeDuplicate = (arr) => {
+  if (arr.length === 0) return 0;
   let i = 0;
-
-  for (let j = 1; j < nums.length; j++) {
-    if (nums[i] !== nums[j]) {
+  for (let j = 1; j < arr.length; j++) {
+    if (arr[j] !== arr[i]) {
       i++;
-      nums[i] = nums[j];
+      arr[i] = arr[j];
     }
   }
 
-  return i + 1;
-}
+  let k = i + 1;
+  for (let x = k; x < arr.length; x++) {
+    arr[x] = "_";
+  }
 
-// Time Complexity - O(n)
-// Space Complexity - O(1)
-console.log(removeDuplicatesNew([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+  return [k, arr];
+};
+
+console.log(removeDuplicate([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+console.log(removeDuplicate([1, 1, 2]));

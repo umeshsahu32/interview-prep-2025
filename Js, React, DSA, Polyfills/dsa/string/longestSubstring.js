@@ -7,19 +7,28 @@ const lengthOfLongestSubstring = (s) => {
 
   for (let right = 0; right < s.length; right++) {
     const rightChar = s[right];
+    console.log(`\nRight index ${right}, char: ${rightChar}`);
 
-    // Shrink window until there's no duplicate
     while (charSet.has(rightChar)) {
+      console.log(
+        `  Duplicate found: ${rightChar}. Removing ${s[left]} at left index ${left}`
+      );
       charSet.delete(s[left]);
       left++;
     }
 
     charSet.add(rightChar);
+    console.log(
+      `  Window: ${s.slice(left, right + 1)}, Set: [${[...charSet].join(", ")}]`
+    );
     maxLength = Math.max(maxLength, right - left + 1);
+    console.log(`  Current maxLength: ${maxLength}`);
   }
 
   return maxLength;
 };
+
+lengthOfLongestSubstring("abcabcbb");
 
 // Example:
 console.log(lengthOfLongestSubstring("abcabcbb")); // 3
